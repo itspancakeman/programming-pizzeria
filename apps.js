@@ -44,8 +44,6 @@ class Customer {
 }
 
 
-
-
 // ================= KEYBOARD LOGIC =================
 
 
@@ -66,14 +64,36 @@ function initCustomer() {
 
 }
 
-
+// =========== BUTTON SETUP ================
+ctx.fillStyle = '#eeaa00';
+ctx.fillRect(110, 50, 100, 37);
+ctx.fillStyle = '#001122';
+ctx.textAlign = 'center';
+ctx.font = '12px papyrus';
+ctx.fillText('Round Crust', 320, 145, 200);
 
 
 
 // ================== GAME PROCESSES ===============
 function gameLoop() {
     ctx.clearRect(0, 0, game.width, game.height);
-    if (customer.inside) {
-        customer.render();
+    if (customer && customer.inside) {
+    console.log(customer);
+    customer.render();    
     }
+    // round crust button
+    ctx.fillStyle = '#eeaa00';
+    ctx.fillRect(220, 400, 200, 75);
+    ctx.fillStyle = '#001122';
+    ctx.textAlign = 'center';
+    ctx.font = '12px papyrus';
+    ctx.fillText('Round Crust', 320, 440, 200);
+    // square crust button
+    ctx.fillStyle = '#eeaa00';
+    ctx.fillRect(220, 500, 200, 75);
+    ctx.fillStyle = '#001122';
+    ctx.textAlign = 'center';
+    ctx.font = '12px papyrus';
+    ctx.fillText('Square Crust', 320, 540, 200);
+    // red sauce button
 }
