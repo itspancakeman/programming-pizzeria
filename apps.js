@@ -83,59 +83,65 @@ function gameLoop() {
     }
     // round crust button
     ctx.fillStyle = '#eeaa00';
-    ctx.fillRect(220, 400, 200, 75);
+    ctx.fillRect(170, 400, 200, 75);
     ctx.fillStyle = '#001122';
     ctx.textAlign = 'center';
     ctx.font = '12px papyrus';
-    ctx.fillText('Round Crust', 320, 440, 200);
+    ctx.fillText('Round Crust', 270, 440, 200);
     // square crust button
     ctx.fillStyle = '#eeaa00';
-    ctx.fillRect(220, 500, 200, 75);
+    ctx.fillRect(170, 500, 200, 75);
     ctx.fillStyle = '#001122';
     ctx.textAlign = 'center';
     ctx.font = '12px papyrus';
-    ctx.fillText('Square Crust', 320, 540, 200);
+    ctx.fillText('Square Crust', 270, 540, 200);
     // red sauce button
     ctx.fillStyle = '#eeaa00';
-    ctx.fillRect(425, 400, 200, 75);
+    ctx.fillRect(375, 400, 200, 75);
     ctx.fillStyle = '#001122';
     ctx.textAlign = 'center';
     ctx.font = '12px papyrus';
-    ctx.fillText('Red Suace', 525, 440, 200);
+    ctx.fillText('Red Suace', 475, 440, 200);
     // white sauce button
     ctx.fillStyle = '#eeaa00';
-    ctx.fillRect(425, 500, 200, 75);
+    ctx.fillRect(375, 500, 200, 75);
     ctx.fillStyle = '#001122';
     ctx.textAlign = 'center';
     ctx.font = '12px papyrus';
-    ctx.fillText('White Sauce', 525, 540, 200);
+    ctx.fillText('White Sauce', 475, 540, 200);
     // pepperoni button
     ctx.fillStyle = '#eeaa00';
-    ctx.fillRect(630, 400, 200, 75);
+    ctx.fillRect(580, 400, 200, 75);
     ctx.fillStyle = '#001122';
     ctx.textAlign = 'center';
     ctx.font = '12px papyrus';
-    ctx.fillText('Pepperoni', 730, 440, 200);
+    ctx.fillText('Pepperoni', 680, 440, 200);
     //ham button
     ctx.fillStyle = '#eeaa00';
-    ctx.fillRect(630, 500, 200, 75);
+    ctx.fillRect(580, 500, 200, 75);
     ctx.fillStyle = '#001122';
     ctx.textAlign = 'center';
     ctx.font = '12px papyrus';
-    ctx.fillText('Ham', 730, 540, 200);
+    ctx.fillText('Ham', 680, 540, 200);
     //mushroom button
     ctx.fillStyle = '#eeaa00';
-    ctx.fillRect(835, 400, 200, 75);
+    ctx.fillRect(785, 400, 200, 75);
     ctx.fillStyle = '#001122';
     ctx.textAlign = 'center';
     ctx.font = '12px papyrus';
-    ctx.fillText('Mushroom', 935, 440, 200);
+    ctx.fillText('Mushroom', 885, 440, 200);
     // green pepper button
     ctx.fillStyle = '#eeaa00';
-    ctx.fillRect(835, 500, 200, 75);
+    ctx.fillRect(785, 500, 200, 75);
     ctx.fillStyle = '#001122';
     ctx.textAlign = 'center';
     ctx.font = '12px papyrus';
-    ctx.fillText('Green Pepper', 935, 540, 200);
-
+    ctx.fillText('Green Pepper', 885, 540, 200);
+    //submit button
+    ctx.fillStyle = '#eeaa00';
+    ctx.fillRect(990, 445, 200, 75);
+    ctx.fillStyle = '#001122';
+    ctx.textAlign = 'center';
+    ctx.font = '12px papyrus';
+    ctx.fillText('Submit Order', 1090, 485, 200);
 }
