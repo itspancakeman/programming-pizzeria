@@ -5,6 +5,9 @@ const failedOrders = document.getElementById('failed-orders');
 const ctx = game.getContext('2d');
 let customer
 let player
+const crusts = ['round', 'square'];
+const sauces = ['red', 'white'];
+const toppings = ['pepperoni', 'ham', 'mushroom', 'green pepper'];
 
 
 
@@ -39,6 +42,7 @@ class Customer {
         this.render = function() {
             ctx.fillStyle = this.color;
             ctx.fillRect(this.x, this.y, this.width, this.height);
+            ctx.fillText((customerOrder), this.x, this.y);
         }
     }
 }
@@ -63,6 +67,17 @@ function initCustomer() {
     return true;
 
 }
+
+const randomIndex2 = Math.floor(Math.random() * (crusts.length));
+const crustSelection = crusts[randomIndex2];
+
+const randomIndex3 = Math.floor(Math.random() * (sauces.length));
+const sauceSelection = sauces[randomIndex3];
+
+const randomIndex4 = Math.floor(Math.random() * (toppings.length));
+const toppingsSelection = toppings[randomIndex4];
+
+const customerOrder = ('I would Like a ' + crustSelection + " pizza with " + sauceSelection + " sauce and " + toppingsSelection);
 
 // =========== BUTTON SETUP ================
 ctx.fillStyle = '#eeaa00';
