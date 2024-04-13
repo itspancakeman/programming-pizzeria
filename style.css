@@ -1,0 +1,67 @@
+html,body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding-top: 1em;
+    text-align: center;
+    background-image: url(https://t3.ftcdn.net/jpg/00/97/81/02/360_F_97810286_SYAktfuCvCY7uFYxqFI0BVIVflKzqNT9.jpg);
+    background-size: cover;
+    background-repeat: space;
+}
+
+h1, h2 {
+    font-family: "Whisper", cursive;
+    font-weight: 400;
+    font-style: normal;
+    color: red;
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.game-container {
+    max-width: 50em;
+    background-color: beige;
+    margin: 0 auto;
+    padding: 1rem;
+    display: grid;
+    grid-gap: 1em;
+    grid-template-rows: .25fr .5fr .25fr;
+    grid-template-columns: .25fr .5fr .25fr;
+    grid-template-areas: "top-left top-right top-right"
+                                "game game game"
+                                "btm btm btm";
+}
+
+#top-left {
+    grid-area: top-left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: yellow;
+}
+
+#top-right {
+    grid-area: top-right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: yellow;
+}
+
+main {
+    grid-area: game;
+    background-image: url(images/game-background.png);
+    background-repeat:no-repeat;
+    
+}
+
+#btm-block {
+    grid-area: btm;
+    background-color: black;
+    
+}
