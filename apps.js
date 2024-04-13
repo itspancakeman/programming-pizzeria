@@ -7,9 +7,14 @@ let player
 
 
 
-// =============== PAINT INITIAL SCREEN ===============
-
-
+// ========== START SCREEN =============
+window.addEventListener('DOMContentLoaded', function() {
+    var splashScreen = this.document.querySelector('#start-screen');
+    splashScreen.addEventListener('click', () => {
+        splashScreen.style.opacity = 0;
+        document.getElementById('game').style.display = '';
+    });
+});
 
 // =============== SETUP FOR CANVAS RENDERING ============
 
@@ -33,3 +38,4 @@ let player
 
 
 // ================== GAME PROCESSES ===============
+
