@@ -13,8 +13,9 @@ body {
 
 h1, h2 {
     font-family: "Whisper", cursive;
-    font-weight: 400;
+    font-weight: 800;
     font-style: normal;
+    font-size: 40px;
     color: red;
 }
 
@@ -57,11 +58,20 @@ main {
     grid-area: game;
     background-image: url(images/game-background.png);
     background-repeat:no-repeat;
+    background-size: cover;
     
 }
 
 #btm-block {
     grid-area: btm;
     background-color: black;
-    
+    height: 200px;
+}
+
+#game-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+    font-size: 50px;
 }
