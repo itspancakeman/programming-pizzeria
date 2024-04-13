@@ -12,6 +12,9 @@ window.addEventListener('DOMContentLoaded', function() {
     var splashScreen = this.document.querySelector('#start-screen');
     splashScreen.addEventListener('click', () => {
         splashScreen.style.opacity = 0;
+        setTimeout(() => {
+            splashScreen.classList.add('hidden')
+        },610)
         document.getElementById('game').style.display = '';
     });
 });

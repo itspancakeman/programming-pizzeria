@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,17 +12,28 @@
     <!--css here-->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div id="start-screen">
         <h1>Programming Pizzeria!</h1>
-        <h3 id="click-here">click here to begin</h3>
+        <h2>Directions</h2>
+        <p>use WASD or the Arrow keys to select the correct crust shape, sauce type, and toppings to complete customer
+            orders. Completing lots of orders correctly in a row will increase the score quickly! Failed orders will
+            subtract from the score and increase the failed order counter. Customers will only wait so long for their
+            food, so move quickly!
+        </p>
+        <h3 id="click-here">click to begin</h3>
     </div>
 
 
 
     <div class="game-container">
-        <aside id="top-left"><h2 id="score">Score: 0</h2></aside>
-        <aside id="top-right"><h2 id="failed-orders">Failed Orders: 0</h2></aside>
+        <aside id="top-left">
+            <h2 id="score">Score: 0</h2>
+        </aside>
+        <aside id="top-right">
+            <h2 id="failed-orders">Failed Orders: 0</h2>
+        </aside>
         <main>
             <canvas id="game" style="display: none;"><!-- game located here --></canvas>
         </main>
@@ -34,4 +46,5 @@
 
     <script src="apps.js"></script>
 </body>
+
 </html>
