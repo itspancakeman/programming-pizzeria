@@ -42,7 +42,9 @@ class Customer {
         this.render = function() {
             ctx.fillStyle = this.color;
             ctx.fillRect(this.x, this.y, this.width, this.height);
-            ctx.fillText((customerOrder), this.x, this.y);
+            ctx.textAlign = 'left';
+            ctx.font = '20px papyrus';
+            ctx.fillText((customerOrder), (this.x - 20), (this.y - 20));
         }
     }
 }
@@ -55,10 +57,13 @@ class Customer {
 
 // =============== HELPER FUNCTIONS =================
 function initCustomer() {
+    
     setTimeout(function() {
-        let randomX = Math.floor(Math.random() * (game.width - 75));
-        let randomY = Math.floor(Math.random() * (game.height - 120));
-        const colors = ['#7BD3EA', 'A1EEBD', 'F6F7C4', 'F6D6D6'];
+        const spawnAreaW = (game.width - 400);
+        const spawnAreaH = (game.height - 300);
+        let randomX = Math.floor(Math.random() * (spawnAreaW - 75));
+        let randomY = Math.floor(Math.random() * (spawnAreaH - 120));
+        const colors = ['#FFA07A', '#FF1493', '#FF8C00', '#FFD700', '#DA70D6', '#008080', '#48D1CC', '#8B4513', '#696969'];
         let randomIndex = Math.floor(Math.random() * (colors.length -1));
         let randomColor = colors[randomIndex];
         customer = new Customer(randomX, randomY, randomColor, 75, 120);
@@ -78,14 +83,6 @@ const randomIndex4 = Math.floor(Math.random() * (toppings.length));
 const toppingsSelection = toppings[randomIndex4];
 
 const customerOrder = ('I would Like a ' + crustSelection + " pizza with " + sauceSelection + " sauce and " + toppingsSelection);
-
-// =========== BUTTON SETUP ================
-ctx.fillStyle = '#eeaa00';
-ctx.fillRect(110, 50, 100, 37);
-ctx.fillStyle = '#001122';
-ctx.textAlign = 'center';
-ctx.font = '12px papyrus';
-ctx.fillText('Round Crust', 320, 145, 200);
 
 
 
