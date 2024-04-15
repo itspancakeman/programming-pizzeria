@@ -107,6 +107,8 @@ function timesUp() {
     setTimeout(() => {
         game.classList.add('hidden')
     }, 500);
+    var endScreen = this.document.querySelector('#end-screen');
+    endScreen.classList.remove('hidden');
 }
 
 function countdown() {
