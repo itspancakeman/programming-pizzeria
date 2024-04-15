@@ -53,42 +53,28 @@ class Customer {
 }
 
 class Button {
-    constructor(text, fillColor, textColor) {
-        this.x = 0;
-        this.y = 0;
-        this.width = 0;
-        this.height = 0;
-        this.text = text;
-        this.fillColor = fillColor;
-        this.textColor = textColor;
-        
-        this.draw = function() {
-        //create button body
-        ctx.fillStyle = this.fillColor;
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+	constructor(x, y, text) {
+		this.x = x;
+		this.y = y;
+		this.text = text;
+		this.width = 200;
+		this.height = 75;
+		this.fillColor = '#eeaa00';
+		this.textColor = '#001122';
 
-        //create button text
-        ctx.fillStyle = this.textColor;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.font = '20px papyrus';
-        ctx.fillText(this.text, this.x + this.width / 2, this.y + this.height / 2, this.width);
-        }
-        
-        this.setPosition = function(x, y) {
-        this.x = x;
-        this.y = y;
-        }
+		this.draw = function() {
+		ctx.fillStyle = '#eeaa00';
+		ctx.fillRect(this.x, this.y, 200, 75)
 
-        this.setSize = function(width, height) {
-        this.width = width;
-        this.height = height;
-        }
-        
-        this.inBounds = function(mouseX, mouseY) {
-            return (mouseX < this.x || mouseX > this.x + this.width || mouseY < this.y || mouseY > this.y + this.height);
-        };
-}};
+		ctx.fillStyle = '#001122';
+		ctx.textAlign = 'center';
+		ctx.textBaseline = 'middle';
+		ctx.font = '20px papyrus';
+		ctx.fillText(this.text, this.x + 200 / 2 , this.y + 75 /2, 200);
+		}
+	
+	}
+};
 
 // ================= KEYBOARD LOGIC =================
 function movementHanlder(e) {
@@ -164,27 +150,22 @@ function gameLoop() {
     }
 
     function createButtons() {
-        addNewButton = new Button('Round Crust', '#eeaa00', '#001122');
-        addNewButton.setPosition(170, 400);
-        addNewButton.setSize(200, 75);
+        addNewButton = new Button(170, 400, 'Round Crust');
         addNewButton.onClick = function() {
             return console.log('Round Crust added');
-        };
-        addNewButton.mouseOver = function() {
-            ctx.strokeStyle = 'red';
-            ctx.strokeRect(this.x, this.y, this.width, this.height);
         };
 
         buttons.push(addNewButton);
 
         update();
     }
-    function update() {
 
+    function update() {
         buttons.forEach(button => button.draw());
 
         requestAnimationFrame(update);
     }
+
     game.addEventListener('click', function (event) {
         let x = event.pageX - (game.clientLeft + game.offsetLeft);
         let y = event.pageY - (game.clientTop + game.offsetTop);
