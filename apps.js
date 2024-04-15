@@ -66,7 +66,19 @@ class Button {
         this.width = width;
         this.height = height;
     }
+    draw(ctx) {
+        //create button body
+        ctx.fillStyle = this.fillColor;
+        ctx.fillRect(this.x, this.y, this.width, this.height);
 
+        //create button text
+        ctx.fillStyle = this.textColor;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.font = '20px papyrus';
+        ctx.fillText(this.text, this.x + this.width / 2, this.y + this.height / 2, this.width);
+    }
+}
 
 // ================= KEYBOARD LOGIC =================
 function movementHanlder(e) {
