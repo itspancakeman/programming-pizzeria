@@ -73,6 +73,7 @@ class Button {
         ctx.font = '20px papyrus';
         ctx.fillText(this.text, this.x + this.width / 2, this.y + this.height / 2, this.width);
         }
+        
         this.setPosition = function(x, y) {
         this.x = x;
         this.y = y;
@@ -81,8 +82,13 @@ class Button {
         this.setSize = function(width, height) {
         this.width = width;
         this.height = height;
-    }
-}}
+        }
+        
+        this.inBounds = function(mouseX, mouseY) {
+            return (mouseX < this.x || mouseX > this.x + this.width || mouseY < this.y || mouseY > this.y + this.height);
+        }
+        }
+}
 
 // ================= KEYBOARD LOGIC =================
 function movementHanlder(e) {
@@ -133,11 +139,14 @@ function gameLoop() {
     const buttons = [];
 
     function createButtons() {
-        roundCrustButton = new Button('Round Crust', '#eeaa00', '#001122');
-        roundCrustButton.setPosition(170, 400);
-        roundCrustButton.setSize(200, 75);
+        addNewButton = new Button('Round Crust', '#eeaa00', '#001122');
+        addNewButton.setPosition(170, 400);
+        addNewButton.setSize(200, 75);
+        addNewButton.onClick = function() {
+            return console.log('Round Crust added');
+        };
 
-        buttons.push(roundCrustButton);
+        buttons.push(addNewButton);
 
         update();
     }
@@ -149,5 +158,17 @@ function gameLoop() {
 
         requestAnimationFrame(update);
     }
+    game.addEventListener('click', function (event) {
+        let x = event.pageX - (game.clientLeft + game.offsetLeft);
+        let y = event.pageY - (game.clientTop + game.offsetTop);
+        buttons.forEach(button => {
+                if (button.inBounds(x, y) && !!button.onClick) button.onClick();
+        });
+    });
+    game.addEventListener('mousemove', function(event) {
+
+    });
+
+
     createButtons();
 }
