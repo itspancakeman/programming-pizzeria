@@ -98,7 +98,7 @@ function movementHanlder(e) {
 
 
 // ================= TIMER ===============
-let timeLeft = 30;
+let timeLeft = 60;
 let timer = document.getElementById('timer');
 
 let timerId = setInterval(countdown, 1000);
