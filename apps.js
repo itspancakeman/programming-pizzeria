@@ -145,7 +145,7 @@ function gameLoop() {
         /* ctx.fillStyle = '#000000';
         ctx.fillRect(0, 0, game.width, game.height); */
 
-        roundCrustButton.draw();
+        buttons.forEach(button => button.draw());
 
         requestAnimationFrame(update);
     }
