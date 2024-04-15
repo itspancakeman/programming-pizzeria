@@ -53,20 +53,15 @@ class Customer {
 
 class Button {
     constructor(text, fillColor, textColor) {
+        this.x = 0;
+        this.y = 0;
+        this.width = 0;
+        this.height = 0;
         this.text = text;
         this.fillColor = fillColor;
         this.textColor = textColor;
-
-    }
-    setPosition(x, y) {
-        this.x = x;
-        this.y = y;
-    }
-    setSize(width, height) {
-        this.width = width;
-        this.height = height;
-    }
-    draw(ctx) {
+        
+        this.draw = function() {
         //create button body
         ctx.fillStyle = this.fillColor;
         ctx.fillRect(this.x, this.y, this.width, this.height);
@@ -77,8 +72,17 @@ class Button {
         ctx.textBaseline = 'middle';
         ctx.font = '20px papyrus';
         ctx.fillText(this.text, this.x + this.width / 2, this.y + this.height / 2, this.width);
+        }
+        this.setPosition = function(x, y) {
+        this.x = x;
+        this.y = y;
+        }
+
+        this.setSize = function(width, height) {
+        this.width = width;
+        this.height = height;
     }
-}
+}}
 
 // ================= KEYBOARD LOGIC =================
 function movementHanlder(e) {
@@ -125,67 +129,25 @@ function gameLoop() {
     if (customer && customer.inside) {
     customer.render();    
     }
-    // round crust button
-    ctx.fillStyle = '#eeaa00';
-    ctx.fillRect(170, 400, 200, 75);
-    ctx.fillStyle = '#001122';
-    ctx.textAlign = 'center';
-    ctx.font = '12px papyrus';
-    ctx.fillText('Round Crust', 270, 440, 200);
-    // square crust button
-    ctx.fillStyle = '#eeaa00';
-    ctx.fillRect(170, 500, 200, 75);
-    ctx.fillStyle = '#001122';
-    ctx.textAlign = 'center';
-    ctx.font = '12px papyrus';
-    ctx.fillText('Square Crust', 270, 540, 200);
-    // red sauce button
-    ctx.fillStyle = '#eeaa00';
-    ctx.fillRect(375, 400, 200, 75);
-    ctx.fillStyle = '#001122';
-    ctx.textAlign = 'center';
-    ctx.font = '12px papyrus';
-    ctx.fillText('Red Suace', 475, 440, 200);
-    // white sauce button
-    ctx.fillStyle = '#eeaa00';
-    ctx.fillRect(375, 500, 200, 75);
-    ctx.fillStyle = '#001122';
-    ctx.textAlign = 'center';
-    ctx.font = '12px papyrus';
-    ctx.fillText('White Sauce', 475, 540, 200);
-    // pepperoni button
-    ctx.fillStyle = '#eeaa00';
-    ctx.fillRect(580, 400, 200, 75);
-    ctx.fillStyle = '#001122';
-    ctx.textAlign = 'center';
-    ctx.font = '12px papyrus';
-    ctx.fillText('Pepperoni', 680, 440, 200);
-    //ham button
-    ctx.fillStyle = '#eeaa00';
-    ctx.fillRect(580, 500, 200, 75);
-    ctx.fillStyle = '#001122';
-    ctx.textAlign = 'center';
-    ctx.font = '12px papyrus';
-    ctx.fillText('Ham', 680, 540, 200);
-    //mushroom button
-    ctx.fillStyle = '#eeaa00';
-    ctx.fillRect(785, 400, 200, 75);
-    ctx.fillStyle = '#001122';
-    ctx.textAlign = 'center';
-    ctx.font = '12px papyrus';
-    ctx.fillText('Mushroom', 885, 440, 200);
-    // green pepper button
-    ctx.fillStyle = '#eeaa00';
-    ctx.fillRect(785, 500, 200, 75);
-    ctx.fillStyle = '#001122';
-    ctx.textAlign = 'center';
-    ctx.font = '12px papyrus';
-    ctx.fillText('Green Pepper', 885, 540, 200);
-    //submit button
-    ctx.fillStyle = '#eeaa00';
-    ctx.fillRect(990, 445, 200, 75);
-    ctx.fillStyle = '#001122';
-    ctx.textAlign = 'center';
-    ctx.font = '12px papyrus';
-    ctx.fillText('Submit Order', 1090, 485, 200);
+
+    const buttons = [];
+
+    function createButtons() {
+        roundCrustButton = new Button('Round Crust', '#eeaa00', '#001122');
+        roundCrustButton.setPosition(170, 400);
+        roundCrustButton.setSize(200, 75);
+
+        buttons.push(roundCrustButton);
+
+        update();
+    }
+    function update() {
+        /* ctx.fillStyle = '#000000';
+        ctx.fillRect(0, 0, game.width, game.height); */
+
+        roundCrustButton.draw();
+
+        requestAnimationFrame(update);
+    }
+    createButtons();
 }
