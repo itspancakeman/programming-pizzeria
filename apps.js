@@ -98,13 +98,15 @@ function movementHanlder(e) {
 
 
 // ================= TIMER ===============
-let timeLeft = 60;
+let timeLeft = 5;
 let timer = document.getElementById('timer');
 
 let timerId = setInterval(countdown, 1000);
 
 function timesUp() {
-    
+    setTimeout(() => {
+        game.classList.add('hidden')
+    }, 500);
 }
 
 function countdown() {
