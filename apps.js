@@ -25,6 +25,8 @@ window.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+document.addEventListener('keydown', movementHanlder);
+
 // =============== SETUP FOR CANVAS RENDERING ============
 game.width = 1200; 
 game.height = 600;
@@ -49,9 +51,28 @@ class Customer {
     }
 }
 
+class Button {
+    constructor(text, fillColor, textColor) {
+        this.text = text;
+        this.fillColor = fillColor;
+        this.textColor = textColor;
+
+    }
+    setPosition(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+    setSize(width, height) {
+        this.width = width;
+        this.height = height;
+    }
+
 
 // ================= KEYBOARD LOGIC =================
-
+function movementHanlder(e) {
+    if (e.key === 'ArrowUp' || e.key === 'w') {
+    }
+}
 
 
 
@@ -90,7 +111,6 @@ const customerOrder = ('I would Like a ' + crustSelection + " pizza with " + sau
 function gameLoop() {
     ctx.clearRect(0, 0, game.width, game.height);
     if (customer && customer.inside) {
-    console.log(customer);
     customer.render();    
     }
     // round crust button
