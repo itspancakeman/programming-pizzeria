@@ -150,12 +150,37 @@ function gameLoop() {
     }
 
     function createButtons() {
+        //round crust button
         addNewButton = new Button(170, 400, 'Round Crust');
         addNewButton.onClick = function() {
             return console.log('Round Crust added');
         };
 
+        //square crust button
+        addNewButton2 = new Button(170, 500, 'Square Crust');
+        addNewButton2.onClick = function() {
+            return console.log('Square Crust added');
+        }
+
+        //red sauce button
+        addNewButton3 = new Button(375, 400, 'Red Sauce');
+        addNewButton3.onClick = function() {
+            return console.log('Red Sauce added');
+        }
+
+        //white sauce button
+        addNewButton4 = new Button(375, 500, 'White Sauce');
+        addNewButton4.onClick = function() {
+            return console.log('White Sauce added');
+        }
+
+        
+
+        //push statements
         buttons.push(addNewButton);
+        buttons.push(addNewButton2);
+        buttons.push(addNewButton3);
+        buttons.push(addNewButton4);
 
         update();
     }
