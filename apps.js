@@ -174,13 +174,46 @@ function gameLoop() {
             return console.log('White Sauce added');
         }
 
-        
+        //pepperoni button
+        addNewButton5 = new Button(580, 400, 'Pepperoni');
+        addNewButton5.onclick = function() {
+            return console.log('Pepperoni added');
+        }
+
+        //ham button
+        addNewButton6 = new Button(580, 500, 'Ham');
+        addNewButton6.onClick = function() {
+            return console.log('Ham added');
+        }
+
+        //mushroom button
+        addNewButton7 = new Button(785, 400, 'Mushroom');
+        addNewButton7.onClick = function() {
+            return console.log('Mushroom added');
+        }
+
+        //green pepper button
+        addNewButton8 = new Button(785, 500, 'Green Pepper');
+        addNewButton8.onClick = function() {
+            return console.log('Green Pepper added');
+        }
+
+        //submit order button
+        addNewButton9 = new Button(990, 445, 'Submit Order');
+        addNewButton9.onClick = function() {
+            return console.log('Order submitted');
+        }
 
         //push statements
         buttons.push(addNewButton);
         buttons.push(addNewButton2);
         buttons.push(addNewButton3);
         buttons.push(addNewButton4);
+        buttons.push(addNewButton5);
+        buttons.push(addNewButton6);
+        buttons.push(addNewButton7);
+        buttons.push(addNewButton8);
+        buttons.push(addNewButton9);
 
         update();
     }
