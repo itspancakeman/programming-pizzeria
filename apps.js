@@ -5,7 +5,10 @@ const failedOrders = document.getElementById('failed-orders');
 const ctx = game.getContext('2d');
 let customer
 let player
-const buttons = [];
+/* const buttons = []; */
+/* gameLeft = game.offsetLeft + game.clientLeft,
+gameTop = game.offsetTop + game.clientTop, */
+
 const crusts = ['round', 'square'];
 const sauces = ['red', 'white'];
 const toppings = ['pepperoni', 'ham', 'mushroom', 'green pepper'];
@@ -52,29 +55,43 @@ class Customer {
     }
 }
 
-class Button {
-	constructor(x, y, text) {
-		this.x = x;
-		this.y = y;
-		this.text = text;
-		this.width = 200;
-		this.height = 75;
-		this.fillColor = '#eeaa00';
-		this.textColor = '#001122';
+/* class Button {
+    constructor(x, y, text) {
+        this.x = x;
+        this.y = y;
+        this.text = text;
+        this.width = 200;
+        this.height = 75;
+        this.fillColor = '#eeaa00';
+        this.textColor = '#001122';
+        this.clicked = false;
+    }
 
-		this.draw = function() {
-		ctx.fillStyle = '#eeaa00';
-		ctx.fillRect(this.x, this.y, 200, 75)
+    draw() {
+        ctx.fillStyle = '#eeaa00';
+        ctx.fillRect(this.x, this.y, 200, 75);
 
-		ctx.fillStyle = '#001122';
-		ctx.textAlign = 'center';
-		ctx.textBaseline = 'middle';
-		ctx.font = '20px papyrus';
-		ctx.fillText(this.text, this.x + 200 / 2 , this.y + 75 /2, 200);
-		}
-	
-	}
-};
+        ctx.fillStyle = '#001122';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.font = '20px papyrus';
+        ctx.fillText(this.text, this.x + 200 / 2 , this.y + 75 / 2);
+    }
+        
+    inBounds(mX, mY) {
+        return (mX >= this.x && mX <= this.x + this.width && mY >= this.y && mY <= this.y + this.height);
+    }
+        
+    handleClick() {
+        if (!this.clicked && this.onClick) {
+            this.onClick();
+            this.clicked = true;
+    }
+}
+    mouseOver() {
+        console.log(`${this.text} mouseOver`);
+    }
+} */
 
 // ================= KEYBOARD LOGIC =================
 function movementHanlder(e) {
@@ -84,7 +101,7 @@ function movementHanlder(e) {
 
 
 // ================= TIMER ===============
-let timeLeft = 5;
+let timeLeft = 90;
 let timer = document.getElementById('timer');
 
 let timerId = setInterval(countdown, 1000);
@@ -148,8 +165,8 @@ function gameLoop() {
     if (customer && customer.inside) {
     customer.render();    
     }
-
-    function createButtons() {
+}
+    /* function createButtons() {
         //round crust button
         addNewButton = new Button(170, 400, 'Round Crust');
         addNewButton.onClick = function() {
@@ -221,17 +238,23 @@ function gameLoop() {
     function update() {
         buttons.forEach(button => button.draw());
 
+
+
         requestAnimationFrame(update);
+
+
     }
 
     game.addEventListener('click', function (event) {
-        let x = event.pageX - (game.clientLeft + game.offsetLeft);
-        let y = event.pageY - (game.clientTop + game.offsetTop);
+        let x = event.pageX
+        let y = event.pageY
         buttons.forEach(button => {
-                if (button.inBounds(x, y) && button.onClick) button.onClick();
+            if (button.inBounds(x, y)) {
+                button.handleClick();
+            }
         });
     });
-    game.addEventListener('mouseOver', (event) => {
+    game.addEventListener('mousemove', (event) => {
         let x = event.pageX - (game.clientLeft + game.offsetLeft);
         let y = event.pageY - (game.clientTop + game.offsetTop);
         buttons.forEach(button => {
@@ -241,4 +264,4 @@ function gameLoop() {
 
 
     createButtons();
-}
+} */
