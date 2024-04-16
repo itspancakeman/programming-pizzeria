@@ -159,6 +159,25 @@ const customerOrder = ('I would Like a ' + crustSelection + " pizza with " + sau
 
 
 
+// =========== BUTTON STUFF ==============
+let roundCrust = document.getElementById('round-crust');
+let squareCrust = document.getElementById('square-crust');
+let redSauce = document.getElementById('red-sauce');
+let whiteSauce = document.getElementById('white-sauce');
+let pepperoni = document.getElementById('pepperoni');
+let ham = document.getElementById('ham');
+let mushroom = document.getElementById('mushroom');
+let greenPepper = document.getElementById('green-pepper');
+let submitButton = document.getElementById('submit-button');
+
+roundCrust.style.top = '425px';
+roundCrust.style.left = '440px';
+
+squareCrust.style.top = '490px';
+squareCrust.style.left = '440px';
+
+
+
 // ================== GAME PROCESSES ===============
 function gameLoop() {
     ctx.clearRect(0, 0, game.width, game.height);

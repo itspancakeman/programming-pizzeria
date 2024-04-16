@@ -144,5 +144,8 @@ main {
     text-decoration: none;
     display: inline-block;
     font-size: 20px;
+    position: absolute;
+    max-width: 175px;
+    text-wrap: nowrap;
 }
 
