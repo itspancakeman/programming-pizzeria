@@ -256,16 +256,65 @@ function crustButtonPress2() {
     bottomBlock.appendChild(buildArea2);
 }
 
+function sauceButtonPress() {
+    let buildArea3 = document.createElement('p');
+    let buildAreaText3 = document.createTextNode('Red Sauce added');
+    buildArea3.appendChild(buildAreaText3);
+    bottomBlock.appendChild(buildArea3);
+}
+
+function sauceButtonPress2() {
+    let buildArea4 = document.createElement('p');
+    let buildAreaText4 = document.createTextNode('White Sauce added');
+    buildArea4.appendChild(buildAreaText4);
+    bottomBlock.appendChild(buildArea4);
+}
+
+function meatButtonPress() {
+    let buildArea5 = document.createElement('p');
+    let buildAreaText5 = document.createTextNode('Pepperoni added');
+    buildArea5.appendChild(buildAreaText5);
+    bottomBlock.appendChild(buildArea5);
+}
+
+function meatButtonPress2() {
+    let buildArea6 = document.createElement('p');
+    let buildAreaText6 = document.createTextNode('Ham added');
+    buildArea6.appendChild(buildAreaText6);
+    bottomBlock.appendChild(buildArea6);
+}
+
+function vegButtonPress() {
+    let buildArea7 = document.createElement('p');
+    let buildAreaText7 = document.createTextNode('Mushroom added');
+    buildArea7.appendChild(buildAreaText7);
+    bottomBlock.appendChild(buildArea7);
+}
+
+function vegButtonPress2() {
+    let buildArea8 = document.createElement('p');
+    let buildAreaText8 = document.createTextNode('Green Pepper added');
+    buildArea8.appendChild(buildAreaText8);
+    bottomBlock.appendChild(buildArea8);
+}
+
+function submitButtonPress() {
+    bottomBlock.innerHTML = '';
+    let buildArea9 = document.createElement('p');
+    let buildAreaText9 = document.createTextNode('Order Submitted!');
+    buildArea9.appendChild(buildAreaText9);
+    bottomBlock.appendChild(buildArea9);
+}
 
 roundCrustButton.addEventListener('click', crustButtonPress);
 squareCrustButton.addEventListener('click', crustButtonPress2);
-
-redSauce.addEventListener('click', buttonPress);
-whiteSauce.addEventListener('click', buttonPress);
-pepperoni.addEventListener('click', buttonPress);
-ham.addEventListener('click', buttonPress);
-mushroom.addEventListener('click', buttonPress);
-greenPepper.addEventListener('click', buttonPress);
+redSauceButton.addEventListener('click', sauceButtonPress);
+whiteSauceButton.addEventListener('click', sauceButtonPress2);
+pepperoniButton.addEventListener('click', meatButtonPress);
+hamButton.addEventListener('click', meatButtonPress2);
+mushroomButton.addEventListener('click', vegButtonPress);
+greenPepperButton.addEventListener('click', vegButtonPress2);
+submitButtonButton.addEventListener('click', submitButtonPress);
 
     /* function createButtons() {
         //round crust button
