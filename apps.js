@@ -3,6 +3,8 @@ const body = document.getElementsByTagName('body');
 const main = document.querySelector('main');
 const game = document.getElementById('game');
 const score = document.getElementById('score');
+let scoreNumber = document.getElementById('score-number');
+scoreNumber = 0;
 const failedOrders = document.getElementById('failed-orders');
 const ctx = game.getContext('2d');
 let customer
@@ -19,7 +21,9 @@ const crusts = ['Round', 'Square'];
 const sauces = ['Red', 'White'];
 const toppings = ['Pepperoni', 'Ham', 'Mushroom', 'Green Pepper'];
 
+let builderPizza = [];
 
+console.log(builderPizza);
 
 // ========== START SCREEN =============
 window.addEventListener('DOMContentLoaded', function() {
@@ -159,6 +163,7 @@ function countdown() {
 }
 
 
+// ============SCOREBOARD===============
 
 
 
@@ -248,6 +253,8 @@ function crustButtonPress() {
     let buildAreaText = document.createTextNode(crusts[0] + ' Crust added');
     buildArea.appendChild(buildAreaText);
     bottomBlock.appendChild(buildArea);
+
+    builderPizza.push(crusts[0]);
 }
 
 function crustButtonPress2() {
@@ -256,6 +263,8 @@ function crustButtonPress2() {
     let buildAreaText2 = document.createTextNode(crusts[1] + ' Crust added');
     buildArea2.appendChild(buildAreaText2);
     bottomBlock.appendChild(buildArea2);
+
+    builderPizza.push(crusts[1]);
 }
 
 function sauceButtonPress() {
@@ -264,6 +273,8 @@ function sauceButtonPress() {
     let buildAreaText3 = document.createTextNode(sauces[0] + ' Sauce added');
     buildArea3.appendChild(buildAreaText3);
     bottomBlock.appendChild(buildArea3);
+
+    builderPizza.push(sauces[0]);
 }
 
 function sauceButtonPress2() {
@@ -272,6 +283,8 @@ function sauceButtonPress2() {
     let buildAreaText4 = document.createTextNode(sauces[1] + ' Sauce added');
     buildArea4.appendChild(buildAreaText4);
     bottomBlock.appendChild(buildArea4);
+
+    builderPizza.push(sauces[1]);
 }
 
 function meatButtonPress() {
@@ -280,6 +293,8 @@ function meatButtonPress() {
     let buildAreaText5 = document.createTextNode(toppings[0] + ' added');
     buildArea5.appendChild(buildAreaText5);
     bottomBlock.appendChild(buildArea5);
+
+    builderPizza.push(toppings[0]);
 }
 
 function meatButtonPress2() {
@@ -288,6 +303,8 @@ function meatButtonPress2() {
     let buildAreaText6 = document.createTextNode(toppings[1] + ' added');
     buildArea6.appendChild(buildAreaText6);
     bottomBlock.appendChild(buildArea6);
+
+    builderPizza.push(toppings[1]);
 }
 
 function vegButtonPress() {
@@ -296,6 +313,8 @@ function vegButtonPress() {
     let buildAreaText7 = document.createTextNode(toppings[2] + ' added');
     buildArea7.appendChild(buildAreaText7);
     bottomBlock.appendChild(buildArea7);
+
+    builderPizza.push(toppings[2]);
 }
 
 function vegButtonPress2() {
@@ -304,6 +323,8 @@ function vegButtonPress2() {
     let buildAreaText8 = document.createTextNode(toppings[3] + ' added');
     buildArea8.appendChild(buildAreaText8);
     bottomBlock.appendChild(buildArea8);
+
+    builderPizza.push(toppings[3]);
 }
 
 function submitButtonPress() {
@@ -312,6 +333,15 @@ function submitButtonPress() {
     let buildAreaText9 = document.createTextNode('Order Submitted!');
     buildArea9.appendChild(buildAreaText9);
     bottomBlock.appendChild(buildArea9);
+
+    if (crustSelection === builderPizza[0] && sauceSelection === builderPizza[1] && toppingsSelection === builderPizza[2]) {
+        scoreNumber += 100;
+        score.innerText = scoreNumber;
+    }
+    
+    builderPizza = [];
+    initCustomer();
+
 }
 
 roundCrustButton.addEventListener('click', crustButtonPress);

@@ -44,6 +44,11 @@ canvas {
     justify-content: center;
     align-items: center;
     background-color: yellow;
+    font-family: "Whisper", cursive;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 40px;
+    color: red;
 }
 #top-center {
     grid-area: top-center;
@@ -138,9 +143,11 @@ main {
 #text-container {
         position: relative; 
 }
-/* 
-button{
-    position: absolute;
-    top: 50px;
-    
+
+/* #score-container {
+    font-family: "Whisper", cursive;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 40px;
+    color: red;
 } */
