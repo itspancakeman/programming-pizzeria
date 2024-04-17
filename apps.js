@@ -242,17 +242,24 @@ function gameLoop() {
     }
 }
 
-function buttonPress() {
+function crustButtonPress() {
     let buildArea = document.createElement('p');
-    let buildAreaText = document.createTextNode(this.text);
+    let buildAreaText = document.createTextNode('Round Crust added');
     buildArea.appendChild(buildAreaText);
     bottomBlock.appendChild(buildArea);
 }
 
+function crustButtonPress2() {
+    let buildArea2 = document.createElement('p');
+    let buildAreaText2 = document.createTextNode('Square Crust Added');
+    buildArea2.appendChild(buildAreaText2);
+    bottomBlock.appendChild(buildArea2);
+}
 
-roundCrust.addEventListener('click', buttonPress)
 
-squareCrust.addEventListener('click', buttonPress);
+roundCrustButton.addEventListener('click', crustButtonPress);
+squareCrustButton.addEventListener('click', crustButtonPress2);
+
 redSauce.addEventListener('click', buttonPress);
 whiteSauce.addEventListener('click', buttonPress);
 pepperoni.addEventListener('click', buttonPress);
