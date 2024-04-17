@@ -8,6 +8,7 @@ const ctx = game.getContext('2d');
 let customer
 let player
 let textContainer = document.getElementById('text-container');
+let bottomBlock = document.getElementById('btm-block');
 /* const buttons = []; */
 /* gameLeft = game.offsetLeft + game.clientLeft,
 gameTop = game.offsetTop + game.clientTop, */
@@ -241,13 +242,16 @@ function gameLoop() {
     }
 }
 
-/* function buttonPress() {
-    var pizzaBuilder = document.createElement('h3');
-    pizzaBuilder.textContent = button.textContent
-    textContainer.appendChild
-} */
+function buttonPress() {
+    let buildArea = document.createElement('p');
+    let buildAreaText = document.createTextNode(this.text);
+    buildArea.appendChild(buildAreaText);
+    bottomBlock.appendChild(buildArea);
+}
 
-/* roundCrust.addEventListener('click', buttonPress);
+
+roundCrust.addEventListener('click', buttonPress)
+
 squareCrust.addEventListener('click', buttonPress);
 redSauce.addEventListener('click', buttonPress);
 whiteSauce.addEventListener('click', buttonPress);
@@ -255,7 +259,6 @@ pepperoni.addEventListener('click', buttonPress);
 ham.addEventListener('click', buttonPress);
 mushroom.addEventListener('click', buttonPress);
 greenPepper.addEventListener('click', buttonPress);
-submitButton.addEventListener('click', buttonPress); */
 
     /* function createButtons() {
         //round crust button
