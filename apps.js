@@ -5,6 +5,7 @@ const failedOrders = document.getElementById('failed-orders');
 const ctx = game.getContext('2d');
 let customer
 let player
+let textContainer = getElementById('text-container');
 /* const buttons = []; */
 /* gameLeft = game.offsetLeft + game.clientLeft,
 gameTop = game.offsetTop + game.clientTop, */
@@ -55,6 +56,30 @@ class Customer {
             ctx.font = '20px papyrus';
             ctx.fillText((customerOrder), (this.x - 20), (this.y - 20));
         }
+    }
+}
+
+class Button {
+    constructor(top, left, text) {
+        this.top = top;
+        this.left = left;
+        this.text = text;
+    }
+    createButton() {
+        var newButton = document.createElement('button');
+        newButton.style.top = top;
+        newButton.style.left = left;
+        newButton.textContent = this.text;
+        newButton.style.backgroundColor = '#eeaa00';
+        newButton.style.borderRadius = '12px';
+        newButton.style.textColor = '#001122';
+        newButton.style.padding = '15px 32px';
+        newButton.style.textAlign = 'center';
+        newButton.style.fontSize = '20px';
+        newButton.style.position = 'absolute';
+        newButton.style.width = '170px';
+        newButton.style.textWrap = 'nowrap';
+
     }
 }
 
@@ -163,7 +188,14 @@ const customerOrder = ('I would Like a ' + crustSelection + " pizza with " + sau
 
 
 // =========== BUTTON STUFF ==============
+
 const buttons = []
+
+let roundCrust = new Button(390, 440, 'Round Crust');
+
+
+
+/* const buttons = []
 
 let roundCrust = document.getElementById('round-crust');
 let squareCrust = document.getElementById('square-crust');
@@ -210,7 +242,7 @@ greenPepper.style.top = '450px';
 greenPepper.style.left = '980px';
 
 submitButton.style.top = '508px';
-submitButton.style.left = '700px';
+submitButton.style.left = '700px'; */
 
 // ================== GAME PROCESSES ===============
 function gameLoop() {
@@ -221,8 +253,21 @@ function gameLoop() {
 }
 
 function buttonPress() {
-    document.createTextNode()
+    var pizzaBuilder = document.createElement('h3');
+    pizzaBuilder.textContent = button.textContent
+    textContainer.appendChild
 }
+
+roundCrust.addEventListener('click', buttonPress);
+squareCrust.addEventListener('click', buttonPress);
+redSauce.addEventListener('click', buttonPress);
+whiteSauce.addEventListener('click', buttonPress);
+pepperoni.addEventListener('click', buttonPress);
+ham.addEventListener('click', buttonPress);
+mushroom.addEventListener('click', buttonPress);
+greenPepper.addEventListener('click', buttonPress);
+submitButton.addEventListener('click', buttonPress);
+
     /* function createButtons() {
         //round crust button
         addNewButton = new Button(170, 400, 'Round Crust');
