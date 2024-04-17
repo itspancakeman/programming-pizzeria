@@ -219,6 +219,10 @@ function gameLoop() {
     customer.render();    
     }
 }
+
+function buttonPress() {
+    document.createTextNode()
+}
     /* function createButtons() {
         //round crust button
         addNewButton = new Button(170, 400, 'Round Crust');
