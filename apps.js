@@ -5,7 +5,7 @@ const failedOrders = document.getElementById('failed-orders');
 const ctx = game.getContext('2d');
 let customer
 let player
-let textContainer = getElementById('text-container');
+/* let textContainer = getElementById('text-container'); */
 /* const buttons = []; */
 /* gameLeft = game.offsetLeft + game.clientLeft,
 gameTop = game.offsetTop + game.clientTop, */
@@ -67,9 +67,9 @@ class Button {
     }
     createButton() {
         var newButton = document.createElement('button');
-        newButton.style.top = top;
-        newButton.style.left = left;
-        newButton.textContent = this.text;
+        newButton.style.top = this.top;
+        newButton.style.left = this.left;
+        newButton.style.textContent = this.text;
         newButton.style.backgroundColor = '#eeaa00';
         newButton.style.borderRadius = '12px';
         newButton.style.textColor = '#001122';
@@ -192,6 +192,10 @@ const customerOrder = ('I would Like a ' + crustSelection + " pizza with " + sau
 const buttons = []
 
 let roundCrust = new Button(390, 440, 'Round Crust');
+roundCrust.createButton();
+
+document.appendChild(roundCrust);
+
 
 
 
@@ -252,13 +256,13 @@ function gameLoop() {
     }
 }
 
-function buttonPress() {
+/* function buttonPress() {
     var pizzaBuilder = document.createElement('h3');
     pizzaBuilder.textContent = button.textContent
     textContainer.appendChild
-}
+} */
 
-roundCrust.addEventListener('click', buttonPress);
+/* roundCrust.addEventListener('click', buttonPress);
 squareCrust.addEventListener('click', buttonPress);
 redSauce.addEventListener('click', buttonPress);
 whiteSauce.addEventListener('click', buttonPress);
@@ -266,7 +270,7 @@ pepperoni.addEventListener('click', buttonPress);
 ham.addEventListener('click', buttonPress);
 mushroom.addEventListener('click', buttonPress);
 greenPepper.addEventListener('click', buttonPress);
-submitButton.addEventListener('click', buttonPress);
+submitButton.addEventListener('click', buttonPress); */
 
     /* function createButtons() {
         //round crust button
