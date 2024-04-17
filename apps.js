@@ -1,11 +1,12 @@
 // GLOBAL DOM AND VARIABLES
+const body = document.getElementsByTagName('body');
 const game = document.getElementById('game');
 const score = document.getElementById('score');
 const failedOrders = document.getElementById('failed-orders');
 const ctx = game.getContext('2d');
 let customer
 let player
-/* let textContainer = getElementById('text-container'); */
+let textContainer = document.getElementById('text-container');
 /* const buttons = []; */
 /* gameLeft = game.offsetLeft + game.clientLeft,
 gameTop = game.offsetTop + game.clientTop, */
@@ -66,10 +67,10 @@ class Button {
         this.text = text;
     }
     createButton() {
-        var newButton = document.createElement('button');
+        let newButton = document.createElement('button');
         newButton.style.top = this.top;
         newButton.style.left = this.left;
-        newButton.style.textContent = this.text;
+        /* newButton.style.innerText = this.text; */
         newButton.style.backgroundColor = '#eeaa00';
         newButton.style.borderRadius = '12px';
         newButton.style.textColor = '#001122';
@@ -79,7 +80,10 @@ class Button {
         newButton.style.position = 'absolute';
         newButton.style.width = '170px';
         newButton.style.textWrap = 'nowrap';
-
+        let buttonText = document.createTextNode(this.text);
+        newButton.appendChild(buttonText);
+        document.body.appendChild(newButton);
+        return newButton;
     }
 }
 
@@ -192,9 +196,8 @@ const customerOrder = ('I would Like a ' + crustSelection + " pizza with " + sau
 const buttons = []
 
 let roundCrust = new Button(390, 440, 'Round Crust');
-roundCrust.createButton();
+let roundCrustButton = roundCrust.createButton();
 
-document.appendChild(roundCrust);
 
 
 
