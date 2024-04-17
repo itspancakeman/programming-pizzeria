@@ -9,6 +9,8 @@ let player
 /* gameLeft = game.offsetLeft + game.clientLeft,
 gameTop = game.offsetTop + game.clientTop, */
 
+
+
 const crusts = ['round', 'square'];
 const sauces = ['red', 'white'];
 const toppings = ['pepperoni', 'ham', 'mushroom', 'green pepper'];
@@ -17,6 +19,7 @@ const toppings = ['pepperoni', 'ham', 'mushroom', 'green pepper'];
 
 // ========== START SCREEN =============
 window.addEventListener('DOMContentLoaded', function() {
+
     var splashScreen = this.document.querySelector('#start-screen');
     splashScreen.addEventListener('click', () => {
         splashScreen.style.opacity = 0;
@@ -160,6 +163,8 @@ const customerOrder = ('I would Like a ' + crustSelection + " pizza with " + sau
 
 
 // =========== BUTTON STUFF ==============
+const buttons = []
+
 let roundCrust = document.getElementById('round-crust');
 let squareCrust = document.getElementById('square-crust');
 let redSauce = document.getElementById('red-sauce');
@@ -170,13 +175,42 @@ let mushroom = document.getElementById('mushroom');
 let greenPepper = document.getElementById('green-pepper');
 let submitButton = document.getElementById('submit-button');
 
-roundCrust.style.top = '425px';
+buttons.push(roundCrust);
+buttons.push(squareCrust);
+buttons.push(redSauce);
+buttons.push(whiteSauce);
+buttons.push(pepperoni);
+buttons.push(ham);
+buttons.push(mushroom);
+buttons.push(greenPepper);
+buttons.push(submitButton);
+
+roundCrust.style.top = '390px';
 roundCrust.style.left = '440px';
 
-squareCrust.style.top = '490px';
+squareCrust.style.top = '450px';
 squareCrust.style.left = '440px';
 
+redSauce.style.top = '390px';
+redSauce.style.left = '620px';
 
+whiteSauce.style.top = '450px';
+whiteSauce.style.left = '620px';
+
+pepperoni.style.top = '390px';
+pepperoni.style.left = '800px';
+
+ham.style.top = '450px';
+ham.style.left = '800px';
+
+mushroom.style.top = '390px';
+mushroom.style.left = '980px';
+
+greenPepper.style.top = '450px';
+greenPepper.style.left = '980px';
+
+submitButton.style.top = '508px';
+submitButton.style.left = '700px';
 
 // ================== GAME PROCESSES ===============
 function gameLoop() {
