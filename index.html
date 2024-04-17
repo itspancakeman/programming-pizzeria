@@ -17,10 +17,10 @@
     <div id="start-screen">
         <h1>Programming Pizzeria!</h1>
         <h2>Directions</h2>
-        <p>click with mouse to select the correct crust shape, sauce type, and toppings to complete customer
+        <p>click with mouse to select the correct crust shape, sauce type, and topping to complete customer
             orders. Completing orders correctly will increase the score by 100 points! Failed orders will
             subtract 100 points from the score and increase the failed order counter. See how high you can
-            score in one minute!
+            score in thirty seconds!
         </p>
         <h3 id="click-here">click to begin</h3>
     </div>
@@ -34,7 +34,7 @@
 
         </aside>
         <aside id="top-center">
-            <h2 id="failed-orders">Failed Orders: 0</h2>
+            <div id="failed-orders">Failed Orders: <span id='failed-order-count'>0</span></div>
         </aside>
         <aside id="top-right">
             <h2 id="timer">Timer: </h2>
@@ -53,6 +53,7 @@
 
     <div class ='hidden' id="end-screen">
         <h1>Time's Up!</h1>
+        <p>Click to try again!</p>
     </div>
 
     <script src="apps.js"></script>

@@ -5,7 +5,9 @@ const game = document.getElementById('game');
 const score = document.getElementById('score');
 let scoreNumber = document.getElementById('score-number');
 scoreNumber = 0;
-const failedOrders = document.getElementById('failed-orders');
+let failedOrders = document.getElementById('failed-orders');
+let failedOrderCount = document.getElementById('failed-order-count');
+failedOrderCount = 0;
 const ctx = game.getContext('2d');
 let customer
 let player
@@ -74,6 +76,7 @@ class Button {
     }
     createButton() {
         let newButton = document.createElement('button');
+        /* newButton.style.display = 'none'; */
         newButton.style.top = this.top + 'px';
         newButton.style.left = this.left + 'px';
         /* newButton.style.innerText = this.text; */
@@ -139,7 +142,7 @@ function movementHanlder(e) {
 
 
 // ================= TIMER ===============
-let timeLeft = 90;
+let timeLeft = 30;
 let timer = document.getElementById('timer');
 
 let timerId = setInterval(countdown, 1000);
@@ -150,6 +153,14 @@ function timesUp() {
     }, 500);
     var endScreen = this.document.querySelector('#end-screen');
     endScreen.classList.remove('hidden');
+    let finalScore = this.document.createElement('p');
+    finalScore.innerText = ('Final score: ' + scoreNumber)
+    endScreen.appendChild(finalScore);
+
+    endScreen.addEventListener('click', () => {
+        location.reload();
+    })
+
 }
 
 function countdown() {
@@ -180,8 +191,8 @@ function initCustomer() {
         let randomColor = colors[randomIndex];
         customer = new Customer(randomX, randomY, randomColor, 75, 120);
     }, 500)
-    
     return true;
+    
 
 }
 
@@ -202,31 +213,31 @@ const customerOrder = ('I would Like a ' + crustSelection + " pizza with " + sau
 
 const buttons = []
 
-let roundCrust = new Button(390, 150, 'Round Crust');
+let roundCrust = new Button(390, 610, 'Round Crust');
 let roundCrustButton = roundCrust.createButton();
 
-let squareCrust = new Button(450, 150, 'Square Crust');
+let squareCrust = new Button(450, 610, 'Square Crust');
 let squareCrustButton = squareCrust.createButton();
 
-let redSauce = new Button(390, 325, 'Red Sauce');
+let redSauce = new Button(390, 790, 'Red Sauce');
 let redSauceButton = redSauce.createButton();
 
-let whiteSauce = new Button(450, 325, 'White Sauce');
+let whiteSauce = new Button(450, 790, 'White Sauce');
 let whiteSauceButton = whiteSauce.createButton();
 
-let pepperoni = new Button(390, 500, 'Pepperoni');
+let pepperoni = new Button(390, 970, 'Pepperoni');
 let pepperoniButton = pepperoni.createButton();
 
-let ham = new Button(450, 500, 'Ham');
+let ham = new Button(450, 970, 'Ham');
 let hamButton = ham.createButton();
 
-let mushroom = new Button(390, 675, 'Mushroom');
+let mushroom = new Button(390, 1150, 'Mushroom');
 let mushroomButton = mushroom.createButton();
 
-let greenPepper = new Button(450, 675, 'Green Pepper');
+let greenPepper = new Button(450, 1150, 'Green Pepper');
 let greenPepperButton = greenPepper.createButton();
 
-let submitButton = new Button(507, 400, 'Submit Order');
+let submitButton = new Button(510, 875, 'Submit Order');
 let submitButtonButton = submitButton.createButton();
 
 buttons.push(roundCrust);
@@ -243,7 +254,7 @@ buttons.push(submitButton);
 function gameLoop() {
     ctx.clearRect(0, 0, game.width, game.height);
     if (customer && customer.inside) {
-    customer.render();    
+    customer.render();
     }
 }
 
@@ -336,6 +347,11 @@ function submitButtonPress() {
 
     if (crustSelection === builderPizza[0] && sauceSelection === builderPizza[1] && toppingsSelection === builderPizza[2]) {
         scoreNumber += 100;
+        score.innerText = scoreNumber;
+    } else {
+        failedOrderCount += 1;
+        failedOrders.innerText = 'Failed Orders: ' + failedOrderCount;
+        scoreNumber -= 100;
         score.innerText = scoreNumber;
     }
     

@@ -1,5 +1,13 @@
 # programming-pizzeria
-Programming Pizzeria! - use WASD or the Arrow keys to select the correct crust shape, sauce type, and toppings to complete customer orders. Completing lots of orders correctly in a row will increase the score quickly! Failed orders will subtract from the score and increase the failed order counter. Customers will only wait so long for their food, move quickly!
 
+## directions
+click with mouse to select the correct crust shape, sauce type, and topping to complete customer
+orders. Completing orders correctly will increase the score by 100 points! Failed orders will
+subtract 100 points from the score and increase the failed order counter. See how high you can
+score in thirty seconds!
 
+## about
+My name is Collin and this is my first full project! I learned a whole lot and plan to continue making improvments as I learn more. Feel free to explore my commit history to see how the game evolved over time. 
+
+## concept art
 ![wireframe-drawing](/images/wireframe-drawing.jpg "wireframe drawing")
