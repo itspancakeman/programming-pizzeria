@@ -1,5 +1,6 @@
 // GLOBAL DOM AND VARIABLES
 const body = document.getElementsByTagName('body');
+const main = document.querySelector('main');
 const game = document.getElementById('game');
 const score = document.getElementById('score');
 const failedOrders = document.getElementById('failed-orders');
@@ -68,8 +69,8 @@ class Button {
     }
     createButton() {
         let newButton = document.createElement('button');
-        newButton.style.top = this.top;
-        newButton.style.left = this.left;
+        newButton.style.top = this.top + 'px';
+        newButton.style.left = this.left + 'px';
         /* newButton.style.innerText = this.text; */
         newButton.style.backgroundColor = '#eeaa00';
         newButton.style.borderRadius = '12px';
@@ -195,24 +196,32 @@ const customerOrder = ('I would Like a ' + crustSelection + " pizza with " + sau
 
 const buttons = []
 
-let roundCrust = new Button(390, 440, 'Round Crust');
+let roundCrust = new Button(390, 150, 'Round Crust');
 let roundCrustButton = roundCrust.createButton();
 
+let squareCrust = new Button(450, 150, 'Square Crust');
+let squareCrustButton = squareCrust.createButton();
 
+let redSauce = new Button(390, 325, 'Red Sauce');
+let redSauceButton = redSauce.createButton();
 
+let whiteSauce = new Button(450, 325, 'White Sauce');
+let whiteSauceButton = whiteSauce.createButton();
 
+let pepperoni = new Button(390, 500, 'Pepperoni');
+let pepperoniButton = pepperoni.createButton();
 
-/* const buttons = []
+let ham = new Button(450, 500, 'Ham');
+let hamButton = ham.createButton();
 
-let roundCrust = document.getElementById('round-crust');
-let squareCrust = document.getElementById('square-crust');
-let redSauce = document.getElementById('red-sauce');
-let whiteSauce = document.getElementById('white-sauce');
-let pepperoni = document.getElementById('pepperoni');
-let ham = document.getElementById('ham');
-let mushroom = document.getElementById('mushroom');
-let greenPepper = document.getElementById('green-pepper');
-let submitButton = document.getElementById('submit-button');
+let mushroom = new Button(390, 675, 'Mushroom');
+let mushroomButton = mushroom.createButton();
+
+let greenPepper = new Button(450, 675, 'Green Pepper');
+let greenPepperButton = greenPepper.createButton();
+
+let submitButton = new Button(507, 400, 'Submit Order');
+let submitButtonButton = submitButton.createButton();
 
 buttons.push(roundCrust);
 buttons.push(squareCrust);
@@ -223,33 +232,6 @@ buttons.push(ham);
 buttons.push(mushroom);
 buttons.push(greenPepper);
 buttons.push(submitButton);
-
-roundCrust.style.top = '390px';
-roundCrust.style.left = '440px';
-
-squareCrust.style.top = '450px';
-squareCrust.style.left = '440px';
-
-redSauce.style.top = '390px';
-redSauce.style.left = '620px';
-
-whiteSauce.style.top = '450px';
-whiteSauce.style.left = '620px';
-
-pepperoni.style.top = '390px';
-pepperoni.style.left = '800px';
-
-ham.style.top = '450px';
-ham.style.left = '800px';
-
-mushroom.style.top = '390px';
-mushroom.style.left = '980px';
-
-greenPepper.style.top = '450px';
-greenPepper.style.left = '980px';
-
-submitButton.style.top = '508px';
-submitButton.style.left = '700px'; */
 
 // ================== GAME PROCESSES ===============
 function gameLoop() {
