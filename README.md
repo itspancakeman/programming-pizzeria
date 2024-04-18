@@ -34,3 +34,6 @@ ctx.fillText('Round Crust', 320, 440, 200);
 ctx.fillText('Round Crust', 270, 440, 200);`
 
 - My blockers with canvas API only continued, as I tried to, after learning nothing I guess, to render text on screen using the canvas API instead of just creating a new element on the page like a smart person. Big upcoming goal for this project is to clean up the mess left behind by my own canvas creations.
+
+## phase 2
+My big upcoming goals are to make this really solid start to a frame as smooth as possible before moving onto the larger project of adding more images to the game. I want to eventually draw all my own icons (about half done) and integrate them into the game. My plan is to have everything be able to layer together so each order shows a different pizza on screen as well.

@@ -147,6 +147,7 @@ class Customer {
             let customerMessage = document.createElement('p');
             let customerOrder = ('I would Like a ' + crustSelection + " pizza with " + sauceSelection + " sauce and " + toppingsSelection);
             customerMessage.textContent = customerOrder;
+            console.log(customerOrder);
         }
         this.inside = true;
 
