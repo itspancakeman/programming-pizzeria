@@ -2,6 +2,7 @@
 const body = document.getElementsByTagName('body');
 const main = document.querySelector('main');
 const game = document.getElementById('game');
+const gameContainer = document.getElementById('game-container');
 const score = document.getElementById('score');
 let scoreNumber = document.getElementById('score-number');
 scoreNumber = 0;
@@ -17,11 +18,96 @@ let bottomBlock = document.getElementById('btm-block');
 /* gameLeft = game.offsetLeft + game.clientLeft,
 gameTop = game.offsetTop + game.clientTop, */
 
-
-
 const crusts = ['Round', 'Square'];
 const sauces = ['Red', 'White'];
 const toppings = ['Pepperoni', 'Ham', 'Mushroom', 'Green Pepper'];
+
+let randomIndex2 = Math.floor(Math.random() * (crusts.length));
+let crustSelection = crusts[randomIndex2];
+            
+let randomIndex3 = Math.floor(Math.random() * (sauces.length));
+let sauceSelection = sauces[randomIndex3];
+        
+let randomIndex4 = Math.floor(Math.random() * (toppings.length));
+let toppingsSelection = toppings[randomIndex4];
+
+//=============BUTTONS
+
+class Button {
+    constructor(top, left, text) {
+        this.top = top;
+        this.left = left;
+        this.text = text;
+        this.button = document.createElement('button')
+    }
+    createButton() {
+        this.button.style.display = 'none';
+        this.button.style.top = this.top + 'px';
+        this.button.style.left = this.left + 'px';
+        /* newButton.style.innerText = this.text; */
+        this.button.style.backgroundColor = '#eeaa00';
+        this.button.style.borderRadius = '12px';
+       this.button.style.textColor = '#001122';
+        this.button.style.padding = '15px 32px';
+        this.button.style.textAlign = 'center';
+        this.button.style.fontSize = '20px';
+        this.button.style.position = 'absolute';
+        this.button.style.width = '170px';
+        this.button.style.textWrap = 'nowrap';
+        let buttonText = document.createTextNode(this.text);
+        this.button.appendChild(buttonText);
+        document.body.appendChild(this.button);
+        return this.button;
+    }
+    showButton() {
+        this.button.style.display = '';
+        return true;
+    }
+    hideButton() {
+        this.button.style.display = 'none';
+        return true;
+    }
+}
+
+const buttons = []
+
+let roundCrust = new Button(390, 610, 'Round Crust');
+let roundCrustButton = roundCrust.createButton();
+
+let squareCrust = new Button(450, 610, 'Square Crust');
+let squareCrustButton = squareCrust.createButton();
+
+let redSauce = new Button(390, 790, 'Red Sauce');
+let redSauceButton = redSauce.createButton();
+
+let whiteSauce = new Button(450, 790, 'White Sauce');
+let whiteSauceButton = whiteSauce.createButton();
+
+let pepperoni = new Button(390, 970, 'Pepperoni');
+let pepperoniButton = pepperoni.createButton();
+
+let ham = new Button(450, 970, 'Ham');
+let hamButton = ham.createButton();
+
+let mushroom = new Button(390, 1150, 'Mushroom');
+let mushroomButton = mushroom.createButton();
+
+let greenPepper = new Button(450, 1150, 'Green Pepper');
+let greenPepperButton = greenPepper.createButton();
+
+let submitButton = new Button(510, 875, 'Submit Order');
+let submitButtonButton = submitButton.createButton();
+
+buttons.push(roundCrust);
+buttons.push(squareCrust);
+buttons.push(redSauce);
+buttons.push(whiteSauce);
+buttons.push(pepperoni);
+buttons.push(ham);
+buttons.push(mushroom);
+buttons.push(greenPepper);
+buttons.push(submitButton);
+
 
 let builderPizza = [];
 
@@ -37,6 +123,7 @@ window.addEventListener('DOMContentLoaded', function() {
             splashScreen.classList.add('hidden')
         },610)
         document.getElementById('game').style.display = '';
+        buttons.map(button => button.showButton());
         initCustomer();
         const runGame = this.setInterval(gameLoop, 60);
     });
@@ -56,6 +143,11 @@ class Customer {
         this.color = color;
         this.width = width;
         this.height = height;
+        this.makeOrder = function() {  
+            let customerMessage = document.createElement('p');
+            let customerOrder = ('I would Like a ' + crustSelection + " pizza with " + sauceSelection + " sauce and " + toppingsSelection);
+            customerMessage.textContent = customerOrder;
+        }
         this.inside = true;
 
         this.render = function() {
@@ -63,38 +155,11 @@ class Customer {
             ctx.fillRect(this.x, this.y, this.width, this.height);
             ctx.textAlign = 'left';
             ctx.font = '20px papyrus';
-            ctx.fillText((customerOrder), (this.x - 20), (this.y - 20));
         }
     }
 }
 
-class Button {
-    constructor(top, left, text) {
-        this.top = top;
-        this.left = left;
-        this.text = text;
-    }
-    createButton() {
-        let newButton = document.createElement('button');
-        /* newButton.style.display = 'none'; */
-        newButton.style.top = this.top + 'px';
-        newButton.style.left = this.left + 'px';
-        /* newButton.style.innerText = this.text; */
-        newButton.style.backgroundColor = '#eeaa00';
-        newButton.style.borderRadius = '12px';
-        newButton.style.textColor = '#001122';
-        newButton.style.padding = '15px 32px';
-        newButton.style.textAlign = 'center';
-        newButton.style.fontSize = '20px';
-        newButton.style.position = 'absolute';
-        newButton.style.width = '170px';
-        newButton.style.textWrap = 'nowrap';
-        let buttonText = document.createTextNode(this.text);
-        newButton.appendChild(buttonText);
-        document.body.appendChild(newButton);
-        return newButton;
-    }
-}
+
 
 /* class Button {
     constructor(x, y, text) {
@@ -142,14 +207,15 @@ function movementHanlder(e) {
 
 
 // ================= TIMER ===============
-let timeLeft = 30;
+let timeLeft = 60;
 let timer = document.getElementById('timer');
 
 let timerId = setInterval(countdown, 1000);
 
 function timesUp() {
     setTimeout(() => {
-        game.classList.add('hidden')
+        gameContainer.classList.add('hidden')
+        buttons.forEach(button => button.hideButton());
     }, 500);
     var endScreen = this.document.querySelector('#end-screen');
     endScreen.classList.remove('hidden');
@@ -180,7 +246,7 @@ function countdown() {
 
 // =============== HELPER FUNCTIONS =================
 function initCustomer() {
-    
+    ctx.clearRect(0, 0, game.width, game.height);
     setTimeout(function() {
         const spawnAreaW = (game.width - 400);
         const spawnAreaH = (game.height - 300);
@@ -192,63 +258,17 @@ function initCustomer() {
         customer = new Customer(randomX, randomY, randomColor, 75, 120);
     }, 500)
     return true;
-    
-
 }
 
-const randomIndex2 = Math.floor(Math.random() * (crusts.length));
-const crustSelection = crusts[randomIndex2];
 
-const randomIndex3 = Math.floor(Math.random() * (sauces.length));
-const sauceSelection = sauces[randomIndex3];
 
-const randomIndex4 = Math.floor(Math.random() * (toppings.length));
-const toppingsSelection = toppings[randomIndex4];
 
-const customerOrder = ('I would Like a ' + crustSelection + " pizza with " + sauceSelection + " sauce and " + toppingsSelection);
 
 
 
 // =========== BUTTON STUFF ==============
 
-const buttons = []
 
-let roundCrust = new Button(390, 610, 'Round Crust');
-let roundCrustButton = roundCrust.createButton();
-
-let squareCrust = new Button(450, 610, 'Square Crust');
-let squareCrustButton = squareCrust.createButton();
-
-let redSauce = new Button(390, 790, 'Red Sauce');
-let redSauceButton = redSauce.createButton();
-
-let whiteSauce = new Button(450, 790, 'White Sauce');
-let whiteSauceButton = whiteSauce.createButton();
-
-let pepperoni = new Button(390, 970, 'Pepperoni');
-let pepperoniButton = pepperoni.createButton();
-
-let ham = new Button(450, 970, 'Ham');
-let hamButton = ham.createButton();
-
-let mushroom = new Button(390, 1150, 'Mushroom');
-let mushroomButton = mushroom.createButton();
-
-let greenPepper = new Button(450, 1150, 'Green Pepper');
-let greenPepperButton = greenPepper.createButton();
-
-let submitButton = new Button(510, 875, 'Submit Order');
-let submitButtonButton = submitButton.createButton();
-
-buttons.push(roundCrust);
-buttons.push(squareCrust);
-buttons.push(redSauce);
-buttons.push(whiteSauce);
-buttons.push(pepperoni);
-buttons.push(ham);
-buttons.push(mushroom);
-buttons.push(greenPepper);
-buttons.push(submitButton);
 
 // ================== GAME PROCESSES ===============
 function gameLoop() {
@@ -338,6 +358,22 @@ function vegButtonPress2() {
     builderPizza.push(toppings[3]);
 }
 
+/* function makeOrder() {
+    const randomIndex2 = Math.floor(Math.random() * (crusts.length));
+    const crustSelection = crusts[randomIndex2];
+    
+    const randomIndex3 = Math.floor(Math.random() * (sauces.length));
+    const sauceSelection = sauces[randomIndex3];
+    
+    const randomIndex4 = Math.floor(Math.random() * (toppings.length));
+    const toppingsSelection = toppings[randomIndex4];
+    
+    const customerOrder = ('I would Like a ' + crustSelection + " pizza with " + sauceSelection + " sauce and " + toppingsSelection);
+
+    return customerOrder;
+    
+} */
+
 function submitButtonPress() {
     bottomBlock.innerHTML = '';
     let buildArea9 = document.createElement('h3');
@@ -355,9 +391,20 @@ function submitButtonPress() {
         score.innerText = scoreNumber;
     }
     
+    randomIndex2 = Math.floor(Math.random() * (crusts.length));
+    crustSelection = crusts[randomIndex2];
+            
+    randomIndex3 = Math.floor(Math.random() * (sauces.length));
+    sauceSelection = sauces[randomIndex3];
+        
+    randomIndex4 = Math.floor(Math.random() * (toppings.length));
+    toppingsSelection = toppings[randomIndex4];
+
     builderPizza = [];
     initCustomer();
-
+    console.log(customer);
+    customer.makeOrder();
+    gameLoop();
 }
 
 roundCrustButton.addEventListener('click', crustButtonPress);
