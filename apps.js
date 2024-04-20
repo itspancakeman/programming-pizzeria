@@ -43,8 +43,8 @@ game.width = 1200;
 game.height = 600;
 
 // ============= PLAYERS ===============
-let customer
-let player
+let customer;
+let player;
 
 // ============ PIZZA ARRAYS ===============
 const crusts = ['Round', 'Square'];
@@ -129,7 +129,7 @@ class Customer {
 
 // ============== BUTTON ARRAY ==============
 
-const buttons = []
+const buttons = [];
 
 let roundCrust = new Button(390, 610, 'Round Crust');
 let roundCrustButton = roundCrust.createButton();
@@ -348,6 +348,7 @@ function submitButtonPress() {
     }
 
     builderPizza = [];
+    orderContainer.textContent = '';
     initCustomer();
     gameLoop();
 }
