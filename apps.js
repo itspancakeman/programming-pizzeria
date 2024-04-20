@@ -175,7 +175,7 @@ let builderPizza = [];
 console.log(builderPizza);
 
 // ================= TIMER ===============
-let timeLeft = 60;
+let timeLeft = 30;
 let timer = document.getElementById('timer');
 
 let timerId = setInterval(countdown, 1000);
