@@ -1,4 +1,6 @@
-// GLOBAL DOM AND VARIABLES
+// GLOBAL DOM VARIABLES
+
+// ============ STATIC ELEMENTS =============
 const body = document.getElementsByTagName('body');
 const main = document.querySelector('main');
 const game = document.getElementById('game');
@@ -10,14 +12,14 @@ let failedOrders = document.getElementById('failed-orders');
 let failedOrderCount = document.getElementById('failed-order-count');
 failedOrderCount = 0;
 const ctx = game.getContext('2d');
-let customer
-let player
 let textContainer = document.getElementById('text-container');
 let bottomBlock = document.getElementById('btm-block');
-/* const buttons = []; */
-/* gameLeft = game.offsetLeft + game.clientLeft,
-gameTop = game.offsetTop + game.clientTop, */
 
+// ============= PLAYERS ===============
+let customer
+let player
+
+// ============ PIZZA ARRAYS ===============
 const crusts = ['Round', 'Square'];
 const sauces = ['Red', 'White'];
 const toppings = ['Pepperoni', 'Ham', 'Mushroom', 'Green Pepper'];
@@ -30,6 +32,8 @@ let sauceSelection = sauces[randomIndex3];
         
 let randomIndex4 = Math.floor(Math.random() * (toppings.length));
 let toppingsSelection = toppings[randomIndex4];
+
+const customerOrder = ('I would Like a ' + crustSelection + " pizza with " + sauceSelection + " sauce and " + toppingsSelection);
 
 //=============BUTTONS
 
@@ -160,53 +164,6 @@ class Customer {
     }
 }
 
-
-
-/* class Button {
-    constructor(x, y, text) {
-        this.x = x;
-        this.y = y;
-        this.text = text;
-        this.width = 200;
-        this.height = 75;
-        this.fillColor = '#eeaa00';
-        this.textColor = '#001122';
-        this.clicked = false;
-    }
-
-    draw() {
-        ctx.fillStyle = '#eeaa00';
-        ctx.fillRect(this.x, this.y, 200, 75);
-
-        ctx.fillStyle = '#001122';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.font = '20px papyrus';
-        ctx.fillText(this.text, this.x + 200 / 2 , this.y + 75 / 2);
-    }
-        
-    inBounds(mX, mY) {
-        return (mX >= this.x && mX <= this.x + this.width && mY >= this.y && mY <= this.y + this.height);
-    }
-        
-    handleClick() {
-        if (!this.clicked && this.onClick) {
-            this.onClick();
-            this.clicked = true;
-    }
-}
-    mouseOver() {
-        console.log(`${this.text} mouseOver`);
-    }
-} */
-
-// ================= KEYBOARD LOGIC =================
-function movementHanlder(e) {
-    if (e.key === 'ArrowUp' || e.key === 'w') {
-    }
-}
-
-
 // ================= TIMER ===============
 let timeLeft = 60;
 let timer = document.getElementById('timer');
@@ -240,12 +197,7 @@ function countdown() {
     } 
 }
 
-
-// ============SCOREBOARD===============
-
-
-
-// =============== HELPER FUNCTIONS =================
+// =============== INITIALIZE CUTSOMER =================
 function initCustomer() {
     ctx.clearRect(0, 0, game.width, game.height);
     setTimeout(function() {
@@ -261,23 +213,15 @@ function initCustomer() {
     return true;
 }
 
-
-
-
-
-
-
-// =========== BUTTON STUFF ==============
-
-
-
-// ================== GAME PROCESSES ===============
+// ================== GAME LOOP ===============
 function gameLoop() {
     ctx.clearRect(0, 0, game.width, game.height);
     if (customer && customer.inside) {
     customer.render();
     }
 }
+
+// ========== ROUND CRUST BUTTON ==============
 
 function crustButtonPress() {
     bottomBlock.innerHTML = '';
@@ -289,6 +233,8 @@ function crustButtonPress() {
     builderPizza.push(crusts[0]);
 }
 
+// ========== SQUARE CRUST BUTTON ==============
+
 function crustButtonPress2() {
     bottomBlock.innerHTML = '';
     let buildArea2 = document.createElement('h3');
@@ -298,6 +244,8 @@ function crustButtonPress2() {
 
     builderPizza.push(crusts[1]);
 }
+
+// ========== RED SAUCE BUTTON ==============
 
 function sauceButtonPress() {
     bottomBlock.innerHTML = '';
@@ -309,6 +257,8 @@ function sauceButtonPress() {
     builderPizza.push(sauces[0]);
 }
 
+// ========== WHITE SUACE BUTTON ==============
+
 function sauceButtonPress2() {
     bottomBlock.innerHTML = '';
     let buildArea4 = document.createElement('h3');
@@ -318,6 +268,8 @@ function sauceButtonPress2() {
 
     builderPizza.push(sauces[1]);
 }
+
+// ========== PEPPERONI BUTTON ==============
 
 function meatButtonPress() {
     bottomBlock.innerHTML = '';
@@ -329,6 +281,8 @@ function meatButtonPress() {
     builderPizza.push(toppings[0]);
 }
 
+// ========== HAM BUTTON ==============
+
 function meatButtonPress2() {
     bottomBlock.innerHTML = '';
     let buildArea6 = document.createElement('h3');
@@ -338,6 +292,8 @@ function meatButtonPress2() {
 
     builderPizza.push(toppings[1]);
 }
+
+// ========== MUSHROOM BUTTON ==============
 
 function vegButtonPress() {
     bottomBlock.innerHTML = '';
@@ -349,6 +305,8 @@ function vegButtonPress() {
     builderPizza.push(toppings[2]);
 }
 
+// ========== GREEN PEPPER BUTTON ==============
+
 function vegButtonPress2() {
     bottomBlock.innerHTML = '';
     let buildArea8 = document.createElement('h3');
@@ -359,21 +317,7 @@ function vegButtonPress2() {
     builderPizza.push(toppings[3]);
 }
 
-/* function makeOrder() {
-    const randomIndex2 = Math.floor(Math.random() * (crusts.length));
-    const crustSelection = crusts[randomIndex2];
-    
-    const randomIndex3 = Math.floor(Math.random() * (sauces.length));
-    const sauceSelection = sauces[randomIndex3];
-    
-    const randomIndex4 = Math.floor(Math.random() * (toppings.length));
-    const toppingsSelection = toppings[randomIndex4];
-    
-    const customerOrder = ('I would Like a ' + crustSelection + " pizza with " + sauceSelection + " sauce and " + toppingsSelection);
-
-    return customerOrder;
-    
-} */
+// ========== SUBMIT BUTTON ==============
 
 function submitButtonPress() {
     bottomBlock.innerHTML = '';
@@ -408,6 +352,8 @@ function submitButtonPress() {
     gameLoop();
 }
 
+// ========== BUTTON EVENT LISTENERS ==============
+
 roundCrustButton.addEventListener('click', crustButtonPress);
 squareCrustButton.addEventListener('click', crustButtonPress2);
 redSauceButton.addEventListener('click', sauceButtonPress);
@@ -418,102 +364,3 @@ mushroomButton.addEventListener('click', vegButtonPress);
 greenPepperButton.addEventListener('click', vegButtonPress2);
 submitButtonButton.addEventListener('click', submitButtonPress);
 
-    /* function createButtons() {
-        //round crust button
-        addNewButton = new Button(170, 400, 'Round Crust');
-        addNewButton.onClick = function() {
-            return console.log('Round Crust added');
-        };
-
-        //square crust button
-        addNewButton2 = new Button(170, 500, 'Square Crust');
-        addNewButton2.onClick = function() {
-            return console.log('Square Crust added');
-        }
-
-        //red sauce button
-        addNewButton3 = new Button(375, 400, 'Red Sauce');
-        addNewButton3.onClick = function() {
-            return console.log('Red Sauce added');
-        }
-
-        //white sauce button
-        addNewButton4 = new Button(375, 500, 'White Sauce');
-        addNewButton4.onClick = function() {
-            return console.log('White Sauce added');
-        }
-
-        //pepperoni button
-        addNewButton5 = new Button(580, 400, 'Pepperoni');
-        addNewButton5.onclick = function() {
-            return console.log('Pepperoni added');
-        }
-
-        //ham button
-        addNewButton6 = new Button(580, 500, 'Ham');
-        addNewButton6.onClick = function() {
-            return console.log('Ham added');
-        }
-
-        //mushroom button
-        addNewButton7 = new Button(785, 400, 'Mushroom');
-        addNewButton7.onClick = function() {
-            return console.log('Mushroom added');
-        }
-
-        //green pepper button
-        addNewButton8 = new Button(785, 500, 'Green Pepper');
-        addNewButton8.onClick = function() {
-            return console.log('Green Pepper added');
-        }
-
-        //submit order button
-        addNewButton9 = new Button(990, 445, 'Submit Order');
-        addNewButton9.onClick = function() {
-            return console.log('Order submitted');
-        }
-
-        //push statements
-        buttons.push(addNewButton);
-        buttons.push(addNewButton2);
-        buttons.push(addNewButton3);
-        buttons.push(addNewButton4);
-        buttons.push(addNewButton5);
-        buttons.push(addNewButton6);
-        buttons.push(addNewButton7);
-        buttons.push(addNewButton8);
-        buttons.push(addNewButton9);
-
-        update();
-    }
-
-    function update() {
-        buttons.forEach(button => button.draw());
-
-
-
-        requestAnimationFrame(update);
-
-
-    }
-
-    game.addEventListener('click', function (event) {
-        let x = event.pageX
-        let y = event.pageY
-        buttons.forEach(button => {
-            if (button.inBounds(x, y)) {
-                button.handleClick();
-            }
-        });
-    });
-    game.addEventListener('mousemove', (event) => {
-        let x = event.pageX - (game.clientLeft + game.offsetLeft);
-        let y = event.pageY - (game.clientTop + game.offsetTop);
-        buttons.forEach(button => {
-            if (button.inBounds(x, y) && !!button.mouseOver) button.mouseOver();
-        });
-    });
-
-
-    createButtons();
-} */
