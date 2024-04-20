@@ -6,12 +6,18 @@ const main = document.querySelector('main');
 const game = document.getElementById('game');
 const gameContainer = document.getElementById('game-container');
 const score = document.getElementById('score');
+
 let scoreNumber = document.getElementById('score-number');
+
 scoreNumber = 0;
+
 let failedOrders = document.getElementById('failed-orders');
 let failedOrderCount = document.getElementById('failed-order-count');
+
 failedOrderCount = 0;
+
 const ctx = game.getContext('2d');
+
 let textContainer = document.getElementById('text-container');
 let orderContainer = document.getElementById('order-container');
 let bottomBlock = document.getElementById('btm-block');
@@ -45,28 +51,26 @@ const crusts = ['Round', 'Square'];
 const sauces = ['Red', 'White'];
 const toppings = ['Pepperoni', 'Ham', 'Mushroom', 'Green Pepper'];
 
+let crustSelection;
+let sauceSelection;
+let toppingsSelection;
+
 function makeOrder() {
     let randomIndex2 = Math.floor(Math.random() * (crusts.length));
-    let crustSelection = crusts[randomIndex2];
+    crustSelection = crusts[randomIndex2];
             
     let randomIndex3 = Math.floor(Math.random() * (sauces.length));
-    let sauceSelection = sauces[randomIndex3];
+    sauceSelection = sauces[randomIndex3];
         
     let randomIndex4 = Math.floor(Math.random() * (toppings.length));
-    let toppingsSelection = toppings[randomIndex4];
+    toppingsSelection = toppings[randomIndex4];
 
     let customerOrder = ('I would Like a ' + crustSelection + " pizza with " + sauceSelection + " sauce and " + toppingsSelection);
 
     let customerOrderElement = document.createElement('h3');
     customerOrderElement.textContent = customerOrder;
     orderContainer.appendChild(customerOrderElement);
-
-    return crustSelection, sauceSelection, toppingsSelection;
 }
-
-let makeOrderRead = makeOrder();
-
-console.log(makeOrderRead);
 
 //============= BUTTON CLASS ================
 
