@@ -61,8 +61,12 @@ function makeOrder() {
     customerOrderElement.textContent = customerOrder;
     orderContainer.appendChild(customerOrderElement);
 
-    console.log(customerOrder);
+    return crustSelection, sauceSelection, toppingsSelection;
 }
+
+let makeOrderRead = makeOrder();
+
+console.log(makeOrderRead);
 
 //============= BUTTON CLASS ================
 
@@ -110,19 +114,11 @@ class Customer {
         this.color = color;
         this.width = width;
         this.height = height;
-        this.makeOrder = function() {  
-            let customerMessage = document.createElement('p');
-            let customerOrder = ('I would Like a ' + crustSelection + " pizza with " + sauceSelection + " sauce and " + toppingsSelection);
-            customerMessage.textContent = customerOrder;
-            console.log(customerOrder);
-        }
         this.inside = true;
 
         this.render = function() {
             ctx.fillStyle = this.color;
             ctx.fillRect(this.x, this.y, this.width, this.height);
-            ctx.textAlign = 'left';
-            ctx.font = '20px papyrus';
         }
     }
 }
@@ -346,15 +342,6 @@ function submitButtonPress() {
         scoreNumber -= 100;
         score.innerText = scoreNumber;
     }
-    
-    randomIndex2 = Math.floor(Math.random() * (crusts.length));
-    crustSelection = crusts[randomIndex2];
-            
-    randomIndex3 = Math.floor(Math.random() * (sauces.length));
-    sauceSelection = sauces[randomIndex3];
-        
-    randomIndex4 = Math.floor(Math.random() * (toppings.length));
-    toppingsSelection = toppings[randomIndex4];
 
     builderPizza = [];
     initCustomer();
