@@ -13,7 +13,28 @@ let failedOrderCount = document.getElementById('failed-order-count');
 failedOrderCount = 0;
 const ctx = game.getContext('2d');
 let textContainer = document.getElementById('text-container');
+let orderContainer = document.getElementById('order-container');
 let bottomBlock = document.getElementById('btm-block');
+
+// ========== START SCREEN =============
+window.addEventListener('DOMContentLoaded', function() {
+
+    var splashScreen = this.document.querySelector('#start-screen');
+    splashScreen.addEventListener('click', () => {
+        splashScreen.style.opacity = 0;
+        setTimeout(() => {
+            splashScreen.classList.add('hidden')
+        },610)
+        document.getElementById('game').style.display = '';
+        buttons.map(button => button.showButton());
+        initCustomer();
+        const runGame = this.setInterval(gameLoop, 60);
+    });
+});
+
+// =============== SETUP FOR CANVAS RENDERING ============
+game.width = 1200; 
+game.height = 600;
 
 // ============= PLAYERS ===============
 let customer
@@ -24,18 +45,26 @@ const crusts = ['Round', 'Square'];
 const sauces = ['Red', 'White'];
 const toppings = ['Pepperoni', 'Ham', 'Mushroom', 'Green Pepper'];
 
-let randomIndex2 = Math.floor(Math.random() * (crusts.length));
-let crustSelection = crusts[randomIndex2];
+function makeOrder() {
+    let randomIndex2 = Math.floor(Math.random() * (crusts.length));
+    let crustSelection = crusts[randomIndex2];
             
-let randomIndex3 = Math.floor(Math.random() * (sauces.length));
-let sauceSelection = sauces[randomIndex3];
+    let randomIndex3 = Math.floor(Math.random() * (sauces.length));
+    let sauceSelection = sauces[randomIndex3];
         
-let randomIndex4 = Math.floor(Math.random() * (toppings.length));
-let toppingsSelection = toppings[randomIndex4];
+    let randomIndex4 = Math.floor(Math.random() * (toppings.length));
+    let toppingsSelection = toppings[randomIndex4];
 
-const customerOrder = ('I would Like a ' + crustSelection + " pizza with " + sauceSelection + " sauce and " + toppingsSelection);
+    let customerOrder = ('I would Like a ' + crustSelection + " pizza with " + sauceSelection + " sauce and " + toppingsSelection);
 
-//=============BUTTONS
+    let customerOrderElement = document.createElement('h3');
+    customerOrderElement.textContent = customerOrder;
+    orderContainer.appendChild(customerOrderElement);
+
+    console.log(customerOrder);
+}
+
+//============= BUTTON CLASS ================
 
 class Button {
     constructor(top, left, text) {
@@ -72,6 +101,33 @@ class Button {
         return true;
     }
 }
+
+// ============== CUSTOMER CLASS ==================
+class Customer {
+    constructor(x, y, color, width, height) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.width = width;
+        this.height = height;
+        this.makeOrder = function() {  
+            let customerMessage = document.createElement('p');
+            let customerOrder = ('I would Like a ' + crustSelection + " pizza with " + sauceSelection + " sauce and " + toppingsSelection);
+            customerMessage.textContent = customerOrder;
+            console.log(customerOrder);
+        }
+        this.inside = true;
+
+        this.render = function() {
+            ctx.fillStyle = this.color;
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+            ctx.textAlign = 'left';
+            ctx.font = '20px papyrus';
+        }
+    }
+}
+
+// ============== BUTTON ARRAY ==============
 
 const buttons = []
 
@@ -112,57 +168,11 @@ buttons.push(mushroom);
 buttons.push(greenPepper);
 buttons.push(submitButton);
 
+// =============== BUILDER PIZZA =================
 
 let builderPizza = [];
 
 console.log(builderPizza);
-
-// ========== START SCREEN =============
-window.addEventListener('DOMContentLoaded', function() {
-
-    var splashScreen = this.document.querySelector('#start-screen');
-    splashScreen.addEventListener('click', () => {
-        splashScreen.style.opacity = 0;
-        setTimeout(() => {
-            splashScreen.classList.add('hidden')
-        },610)
-        document.getElementById('game').style.display = '';
-        buttons.map(button => button.showButton());
-        initCustomer();
-        const runGame = this.setInterval(gameLoop, 60);
-    });
-});
-
-document.addEventListener('keydown', movementHanlder);
-
-// =============== SETUP FOR CANVAS RENDERING ============
-game.width = 1200; 
-game.height = 600;
-
-// ============== ENTITIES ==================
-class Customer {
-    constructor(x, y, color, width, height) {
-        this.x = x;
-        this.y = y;
-        this.color = color;
-        this.width = width;
-        this.height = height;
-        this.makeOrder = function() {  
-            let customerMessage = document.createElement('p');
-            let customerOrder = ('I would Like a ' + crustSelection + " pizza with " + sauceSelection + " sauce and " + toppingsSelection);
-            customerMessage.textContent = customerOrder;
-            console.log(customerOrder);
-        }
-        this.inside = true;
-
-        this.render = function() {
-            ctx.fillStyle = this.color;
-            ctx.fillRect(this.x, this.y, this.width, this.height);
-            ctx.textAlign = 'left';
-            ctx.font = '20px papyrus';
-        }
-    }
-}
 
 // ================= TIMER ===============
 let timeLeft = 60;
@@ -209,7 +219,8 @@ function initCustomer() {
         let randomIndex = Math.floor(Math.random() * (colors.length -1));
         let randomColor = colors[randomIndex];
         customer = new Customer(randomX, randomY, randomColor, 75, 120);
-    }, 500)
+    }, 500);
+    makeOrder();
     return true;
 }
 
@@ -347,8 +358,6 @@ function submitButtonPress() {
 
     builderPizza = [];
     initCustomer();
-    console.log(customer);
-    customer.makeOrder();
     gameLoop();
 }
 
