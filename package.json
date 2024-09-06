@@ -1,0 +1,11 @@
+{
+  "name": "programming-pizzeria",
+  "version": "1.0.0",
+  "description": "click with mouse to select the correct crust shape, sauce type, and topping to complete customer\r orders. Completing orders correctly will increase the score by 100 points! Failed orders will\r subtract 100 points from the score and increase the failed order counter. See how high you can\r score in thirty seconds!",
+  "main": "apps.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Collin S",
+  "license": "ISC"
+}
